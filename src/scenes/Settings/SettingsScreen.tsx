@@ -20,7 +20,7 @@ function SettingsScreen({theme}) {
   
 
   const initialize = async ()=>{
-    lang = await AsyncStorage.getItem(Constants.LANGUAGEKEY);
+    lang = await AsyncStorage.getItem(Constants.LANGUAGEKEY)||Constants.BULGARIAN;
   const defaultIndex = lang ===Constants.BULGARIAN?0:1
   setSelectedIndex(defaultIndex)
   }
