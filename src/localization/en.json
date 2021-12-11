@@ -1,0 +1,9 @@
+{
+    "version": "1.0",
+    "settings": "Settings",
+    "news": "News",
+    "newsDetails": "News Details",
+    "langSettings": "Language Settings",
+    "searchPlaceHoder": "Type here ...",
+    "back": "Back"
+}

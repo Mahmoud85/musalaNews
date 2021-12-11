@@ -1,0 +1,10 @@
+{
+    "version": "1.0",
+    "settings": "настройки",
+    "news": "Новини",
+    "newsDetails": "подробности за новините",
+    "langSettings": "езикови настройки",
+    "searchPlaceHoder": "пиши тук",
+    "back":"обратно"
+
+}
