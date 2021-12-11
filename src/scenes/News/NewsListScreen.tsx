@@ -1,11 +1,11 @@
 import React, {useEffect, useState,useRef} from 'react';
 import {View, Text, FlatList} from 'react-native';
 import fetchNews from '@musnews/services/news/news.service';
-import NewsItem from '../../componetns/NewsItem/NewsItem.Compoent';
-import Loader from '../../componetns/Loader/Loader.Component'
+import NewsItem from '@musnews/componetns/NewsItem/NewsItem.Compoent';
+import Loader from '@musnews/componetns/Loader/Loader.Component'
 import { SearchBar } from 'react-native-elements';
-import { translate } from '../../localization/localizationManager';
-import withTheme from '../../Theming/ThemeProvider/WithTheme'
+import { translate } from '@musnews/localization/localizationManager';
+import withTheme from '@musnews/Theming/ThemeProvider/WithTheme'
 
 function NewsListScreen({navigation,theme}) {
   const [newsList, setNewsList] = useState([]);
