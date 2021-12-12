@@ -5,5 +5,7 @@
     "newsDetails": "News Details",
     "langSettings": "Language Settings",
     "searchPlaceHoder": "Type here ...",
-    "back": "Back"
+    "back": "Back",
+    "loadingError": "Oops! News Could not be loaded",
+    "loading": "Loading news ..."
 }

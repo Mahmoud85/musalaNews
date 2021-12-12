@@ -2,6 +2,7 @@ import React from 'react';
 import {ActivityIndicator, Text, View} from 'react-native';
 import styles from './Loader.Component.styles'
 import withTheme from '@musnews/Theming/ThemeProvider/WithTheme'
+import {translate} from '@musnews/localization/localizationManager';
 
 type Props = {
   error: boolean;
@@ -15,9 +16,9 @@ let Loader: React.FC<Props> = ({error=false}) => {
       {!error?(
      <>
       <ActivityIndicator size="large" color="gray" />
-      <Text style={styles.loadingText}>Loading News . . .</Text></>
+      <Text style={styles.loadingText}>{translate('loading')}</Text></>
       )
-      :(<Text>Oops News Could not be loaded</Text>)
+      :(<Text>{translate('loadingError')}</Text>)
       }
       
     </View>
