@@ -3,12 +3,16 @@ import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
 import styles from './NewsItem.Component.styles';
 import { Divider, Image } from 'react-native-elements';
 import withTheme from '@musnews/Theming/ThemeProvider/WithTheme';
+import {NewsItemModel,ThemeModel} from '../../models'
+import { CompositeNavigationProp } from '@react-navigation/native';
 
 type Props = {
-  title: string;
-  urlToImage:string
+  newsItem: NewsItemModel;
+  theme:ThemeModel,
+  navigation: CompositeNavigationProp<StackNavigationProp<StackParamList>,StackNavigationProp<StackParamList>
+>
 };
-let NewsItem: React.FC<Props> = ({newsItem,navigation,theme}) => {
+let NewsItem: React.FC<Props> = ({newsItem,navigation, theme}) => {
   return (
     <TouchableOpacity onPress={()=>navigation.push('Details',{newsItem})}>
     <View style={styles.container}>

@@ -6,6 +6,8 @@ import Loader from '@musnews/componetns/Loader/Loader.Component'
 import { SearchBar } from 'react-native-elements';
 import { translate } from '@musnews/localization/localizationManager';
 import withTheme from '@musnews/Theming/ThemeProvider/WithTheme'
+import {NewsItemModel,ThemeModel} from '../../models'
+
 
 function NewsListScreen({navigation,theme}) {
   const [newsList, setNewsList] = useState([]);
@@ -35,7 +37,7 @@ function NewsListScreen({navigation,theme}) {
     },
     [],
   );
- const itemFilter = (item, value)=> {
+ const itemFilter = (item:NewsItemModel , value: string)=> {
   return item?.description?.includes(value)||item?.title?.includes(value)||item?.content?.includes(value)
 
  }
@@ -46,7 +48,7 @@ function NewsListScreen({navigation,theme}) {
     setFilterNewsList(filteredList||[])
   }
 
-  const renderItem = ({item}) => <NewsItem navigation= {navigation} newsItem={item} />;
+  const renderItem = ({item: NewsItemModel}) => <NewsItem navigation= {navigation} newsItem={item} />;
    
   return (
     <View style={{flex: 1}}>
@@ -61,7 +63,7 @@ function NewsListScreen({navigation,theme}) {
         onCancel={()=>updateSearch('')}
         onClear={()=>searchRef?.current?.cancel()}
       />
-      {newsList.length ? (
+      {newsList?.length ? (
         <FlatList
           data={searchValue?filteredNewsList:newsList}
           renderItem={renderItem}

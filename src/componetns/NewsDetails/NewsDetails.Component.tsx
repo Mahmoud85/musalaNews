@@ -3,13 +3,13 @@ import {View, Text, ScrollView, ActivityIndicator} from 'react-native';
 import styles from './NewsDetails.Component.styles';
 import {Card} from 'react-native-elements';
 import withTheme from '@musnews/Theming/ThemeProvider/WithTheme'
+import {NewsItemModel,ThemeModel} from '../../models'
 
 type Props = {
-  title: string,
-  author: string,
-  publishedAt: string,
-  content: string
+newsItem: NewsItemModel,
+theme: ThemeModel,
 };
+
 let NewsItemDetails: React.FC<Props> = ({newsItem,theme}) => {
   return (
     <View style={styles.container}>
