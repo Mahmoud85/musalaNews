@@ -7,5 +7,6 @@ export default fetchNews = async () => {
   const apiKey = Constants.APIKEY
     return fetch(
       `https://newsapi.org/v2/top-headlines?country=${newsLang}&apiKey=${apiKey}`
-    ).then(response => response.json());
+    ).then(response => response.json())
+    .catch(e)
   };
