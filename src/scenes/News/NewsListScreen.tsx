@@ -48,7 +48,7 @@ function NewsListScreen({navigation,theme}) {
     setFilterNewsList(filteredList||[])
   }
 
-  const renderItem = ({item: NewsItemModel}) => <NewsItem navigation= {navigation} newsItem={item} />;
+  const renderItem = ({item}: NewsItemModel) => <NewsItem navigation= {navigation} newsItem={item} />;
    
   return (
     <View style={{flex: 1}}>

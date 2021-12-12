@@ -3,5 +3,7 @@ export interface NewsItemModel {
   author: string,
   publishedAt: string,
   content: string,
-  urlToImage:string
+  urlToImage:string,
+  source: string,
+  description: string
   }
