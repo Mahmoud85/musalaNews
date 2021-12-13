@@ -6,43 +6,30 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import NewsListScreen from '@musnews/scenes/News/NewsListScreen';
 import SettingsScreen from '@musnews/scenes/Settings/SettingsScreen';
 import NewsDetailsScreen from '@musnews/scenes/NewsDetails/NewsDetailsScreen';
-import {Icon} from 'react-native-elements';
 import {translate} from '@musnews/localization/localizationManager';
 import withTheme from '@musnews/Theming/ThemeProvider/WithTheme';
 import ScreenNames from './NavigationScreenNames';
-import {linking} from './NavConfig'
+import {
+  linking,
+  tabConfig,
+  newsScreenOptions,
+  newsDetailsScreenOptions,
+} from './NavConfig';
 
 function Navigation({theme}) {
   const NewStack = createNativeStackNavigator();
-    
+
   function NewsStackScreen() {
     return (
       <NewStack.Navigator>
         <NewStack.Screen
-          options={{
-            title: translate('news'),
-            headerTitleStyle: {
-              color: theme.colors.defaultText,
-            },
-            headerStyle: {
-              backgroundColor: theme.colors.headerBG,
-            },
-          }}
+          options={newsScreenOptions(theme)}
           name={ScreenNames.NEWSLIST}
           component={NewsListScreen}
         />
         <NewStack.Screen
           name={ScreenNames.DETAILS}
-          options={{
-            title: translate('newsDetails'),
-            headerTitleStyle: {
-              color: theme.colors.defaultText,
-            },
-            headerStyle: {
-              backgroundColor: theme.colors.headerBG,
-            },
-            headerBackTitle: translate('back'),
-          }}
+          options={newsDetailsScreenOptions(theme)}
           component={NewsDetailsScreen}
         />
       </NewStack.Navigator>
@@ -51,38 +38,12 @@ function Navigation({theme}) {
 
   const Tab = createBottomTabNavigator();
 
-  
-
   return (
-    <NavigationContainer linking={linking} fallback={<Text>Loading...</Text>} theme={theme}>
-      <Tab.Navigator
-        screenOptions={({route}) => {
-          return {
-            tabBarIcon: ({focused, color, size}) => {
-              let iconName: string;
-              if (route.name === 'News') {
-                iconName = focused ? 'newspaper' : 'newspaper-outline';
-              } else if (route.name === 'Settings') {
-                iconName = 'settings-outline';
-                iconName = focused ? 'settings' : 'settings-outline';
-              }
-              return (
-                <Icon type="ionicon" name={iconName} size={25} color={color} />
-              );
-            },
-            tabBarActiveTintColor: '#1E8EBF',
-            tabBarActiveBackgroundColor: theme.colors.headerBG,
-            tabBarInactiveBackgroundColor: theme.colors.headerBG,
-            tabBarInactiveTintColor: 'gray',
-            headerShown: route.name === 'News' ? false : true,
-            headerTitleStyle: {
-              color: theme.colors.defaultText,
-            },
-            headerStyle: {
-              backgroundColor: theme.colors.headerBG,
-            },
-          };
-        }}>
+    <NavigationContainer
+      linking={linking}
+      fallback={<Text>Loading...</Text>}
+      theme={theme}>
+      <Tab.Navigator screenOptions={tabConfig(theme)}>
         <Tab.Screen
           name={ScreenNames.NEWSTAB}
           options={{
