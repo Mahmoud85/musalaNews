@@ -4,11 +4,13 @@ import NewsItemDetails from '@musnews/componetns/NewsDetails/NewsDetails.Compone
 import Loader from '@musnews/componetns/Loader/Loader.Component';
 import fetchNews from '@musnews/services/news/news.service';
 import {translate} from '@musnews/localization/localizationManager';
-import {addNewsId, findNewsById} from '@musnews/dataFactory/News.Factory'
+import {addNewsId, findNewsById} from '@musnews/dataFactory/News.Factory';
+import { useNavigation } from '@react-navigation/native';
 
-function NewsDetails({navigation}) {
+function NewsDetails() {
+  const navigation = useNavigation();
   const {routes} = navigation.getState();
-  const {params} = routes[1];
+  const {params} = routes[1]|| routes[0]
   const newsItem = params?.newsItem;
   const [item, setItem] = React.useState(null);
   const [error, setError] = React.useState(false);

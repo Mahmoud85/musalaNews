@@ -8,6 +8,7 @@ const linking = {
         Settings: 'settings',
         News: {
           path: 'news',
+          initialRouteName: 'NewsList',
           screens:{
             NewsList: 'newslist',
             Details: 'details/:id'
