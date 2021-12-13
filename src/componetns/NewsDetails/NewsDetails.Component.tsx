@@ -21,14 +21,14 @@ let NewsItemDetails: React.FC<Props> = ({newsItem,theme}) => {
           source={{uri: newsItem.urlToImage}}
         />
         <View style={styles.subHeaderContainer}>
-          <Text style={styles.authorText}>{newsItem.author}</Text>
-          <Text style={styles.publishTimeText}>
+          <Text style={styles.authorText(theme)}>{newsItem.author}</Text>
+          <Text style={styles.publishTimeText(theme)}>
             {new Date(newsItem.publishedAt).toLocaleString()}
           </Text>
         </View>
         <Card.Divider color= {styles.borderStyle(theme)}  />
         <View>
-          <Text style = {styles.contentText}>{newsItem.content}</Text>
+          <Text style = {styles.contentText(theme)}>{newsItem.content}</Text>
         </View>
       </Card>
     </View>

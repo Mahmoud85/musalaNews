@@ -4,8 +4,8 @@ export default {
     activeColor: Colors.BLACK,
     background: Colors.DARKGRAY,
     headerBG: Colors.BLACK,
-    defaultText: 'white',
+    defaultText: Colors.WHITE,
     cardBackground: Colors.PISTACHE,
     divider: Colors.DARKGRAY,
-    title: Colors.BLACK
+    title: Colors.BLACK,
 }

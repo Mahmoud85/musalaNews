@@ -1,19 +1,54 @@
 import React, {useEffect} from 'react';
-import {ScrollView } from 'react-native';
-import NewsItemDetails from '@musnews/componetns/NewsDetails/NewsDetails.Component'
+import {ScrollView, View} from 'react-native';
+import NewsItemDetails from '@musnews/componetns/NewsDetails/NewsDetails.Component';
+import Loader from '@musnews/componetns/Loader/Loader.Component';
+import fetchNews from '@musnews/services/news/news.service';
+import {translate} from '@musnews/localization/localizationManager';
+import {addNewsId, findNewsById} from '@musnews/dataFactory/News.Factory'
 
 function NewsDetails({navigation}) {
-  const {routes}= navigation.getState()
-  const {params} = routes[1]
-  const {newsItem} = params;  
-        
+  const {routes} = navigation.getState();
+  const {params} = routes[1];
+  const newsItem = params?.newsItem;
+  const [item, setItem] = React.useState(null);
+  const [error, setError] = React.useState(false);
+
+  const setNewsItem = () => {
+    if (newsItem) {
+      setItem(newsItem);
+    } else {
+      handleDeepLink();
+    }
+  };
+  const handleDeepLink = async () => {
+    try {
+      const result = await fetchNews();
+      const formatedNews = addNewsId(result.articles);
+      const _id = params?.id;
+      const selectedItem = findNewsById(formatedNews,_id);
+      if (selectedItem){
+        setItem(selectedItem);
+      } else{
+        setError(true)
+      }
+    } catch (error) {
+      setError(true)
+    }
+  };
+
   useEffect(() => {
-  }, [])
+    setNewsItem();
+  }, []);
 
   return (
-    <ScrollView>
-      <NewsItemDetails newsItem = {newsItem}/>
-
+    <ScrollView contentContainerStyle={{flex: 1}}>
+      {item ? (
+        <NewsItemDetails newsItem={item} />
+      ) : (
+        <View style={{flex: 1}}>
+          <Loader error={error} errorMsg = {translate('noNewsItemError')} />
+        </View>
+      )}
     </ScrollView>
   );
 }
