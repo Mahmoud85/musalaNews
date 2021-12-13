@@ -7,8 +7,9 @@ Developing this app below is taken into consideration.
 
 # About Musala news APP  project
 The project is designed to meet the Assesment Criteria by Musala as below the below:
-* The App retrieve data from news api , listing them and allow search
-* The app includes second level page to show news item details
+* App retrieve data from news api , listing them and allow search
+* App includes second level page to show news item details
+* Project is codes based on TS adding some interfaces as Examples (for time being not srtictly typed project)
 * The user can switch between two diffrent languages
 * App adopt to device theme siwtching between dark and light thems
 * App allow deep linking to open a specific news item in the news details page (it would be a better solution to have an api that retrieve single news item passing id to it, however I used an api that retrieve only news array so as a workaround , I looped on news array added ids and filtering to get single one for deep linking)
