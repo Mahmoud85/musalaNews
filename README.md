@@ -19,6 +19,7 @@ To get started developing right away:
 * install all project dependencies with `npm run setup`
 * start the ios emulator with `npm run ios`
 * to test ios deep linking `npm run test-dl-ios or npm run test-dl-android`
+* app uses android NDK version `21.4.7075529`, if android failed due to not having this version on your local machine , you can go to `android/build.gradle` and replace the android NDK with the one on your local machine , for example my machine uses `20.1.5948944`
 
 
 # @ By:
