@@ -10,7 +10,7 @@ type Props = {
 
 
 
-let Loader: React.FC<Props> = ({error=false}) => {
+let Loader: React.FC<Props> = ({error=false, errorMsg = translate('loadingError') }) => {
   return (
     <View style={styles.loadingView}>
       {!error?(
@@ -18,7 +18,7 @@ let Loader: React.FC<Props> = ({error=false}) => {
       <ActivityIndicator size="large" color="gray" />
       <Text style={styles.loadingText}>{translate('loading')}</Text></>
       )
-      :(<Text>{translate('loadingError')}</Text>)
+      :(<Text>{errorMsg}</Text>)
       }
       
     </View>

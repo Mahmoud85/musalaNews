@@ -6,6 +6,7 @@
     "langSettings": "Language Settings",
     "searchPlaceHoder": "Type here ...",
     "back": "Back",
-    "loadingError": "Oops! News Could not be loaded",
-    "loading": "Loading news ..."
+    "loadingError": "Oops! news Could not be loaded",
+    "loading": "Loading news ...",
+    "noNewsItemError": "Oops! this news item could not be found"
 }
