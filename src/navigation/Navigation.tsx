@@ -8,49 +8,53 @@ import SettingsScreen from '@musnews/scenes/Settings/SettingsScreen';
 import NewsDetailsScreen from '@musnews/scenes/NewsDetails/NewsDetailsScreen';
 import {Icon} from 'react-native-elements';
 import {translate} from '@musnews/localization/localizationManager';
-import withTheme from '@musnews/Theming/ThemeProvider/WithTheme'
-import ScreenNames from './NavigationScreenNames'
+import withTheme from '@musnews/Theming/ThemeProvider/WithTheme';
+import ScreenNames from './NavigationScreenNames';
+import {linking} from './NavConfig'
 
- function Navigation({theme}) {
+function Navigation({theme}) {
   const NewStack = createNativeStackNavigator();
+    
+  function NewsStackScreen() {
+    return (
+      <NewStack.Navigator>
+        <NewStack.Screen
+          options={{
+            title: translate('news'),
+            headerTitleStyle: {
+              color: theme.colors.defaultText,
+            },
+            headerStyle: {
+              backgroundColor: theme.colors.headerBG,
+            },
+          }}
+          name={ScreenNames.NEWSLIST}
+          component={NewsListScreen}
+        />
+        <NewStack.Screen
+          name={ScreenNames.DETAILS}
+          options={{
+            title: translate('newsDetails'),
+            headerTitleStyle: {
+              color: theme.colors.defaultText,
+            },
+            headerStyle: {
+              backgroundColor: theme.colors.headerBG,
+            },
+            headerBackTitle: translate('back'),
+          }}
+          component={NewsDetailsScreen}
+        />
+      </NewStack.Navigator>
+    );
+  }
 
-function NewsStackScreen() {
-  return (
-    <NewStack.Navigator>
-      <NewStack.Screen
-        options={{
-          title: translate('news'),
-          headerTitleStyle:{
-            color: theme.colors.defaultText
-          },
-          headerStyle: {
-            backgroundColor: theme.colors.headerBG
-          }
-        }}
-        name={ScreenNames.NEWSLIST}
-        component={NewsListScreen}
-      />
-      <NewStack.Screen
-        name={ScreenNames.DETAILS}
-        options={{
-          title: translate('newsDetails'),
-          headerTitleStyle:{
-            color: theme.colors.defaultText
-          },
-          headerStyle: {
-            backgroundColor: theme.colors.headerBG
-          },
-          headerBackTitle: translate('back')
-        }}
-        component={NewsDetailsScreen}
-      />
-    </NewStack.Navigator>
-  );
-}
+  const Tab = createBottomTabNavigator();
 
-const Tab = createBottomTabNavigator();
+  
+
   return (
-    <NavigationContainer theme = {theme}>
+    <NavigationContainer linking={linking} fallback={<Text>Loading...</Text>} theme={theme}>
       <Tab.Navigator
         screenOptions={({route}) => {
           return {
@@ -67,15 +71,15 @@ const Tab = createBottomTabNavigator();
               );
             },
             tabBarActiveTintColor: '#1E8EBF',
-            tabBarActiveBackgroundColor:theme.colors.headerBG,
+            tabBarActiveBackgroundColor: theme.colors.headerBG,
             tabBarInactiveBackgroundColor: theme.colors.headerBG,
             tabBarInactiveTintColor: 'gray',
-            headerShown: route.name === 'News'? false:true,
-            headerTitleStyle:{
-              color: theme.colors.defaultText
+            headerShown: route.name === 'News' ? false : true,
+            headerTitleStyle: {
+              color: theme.colors.defaultText,
             },
             headerStyle: {
-              backgroundColor: theme.colors.headerBG
+              backgroundColor: theme.colors.headerBG,
             },
           };
         }}>
@@ -91,7 +95,7 @@ const Tab = createBottomTabNavigator();
           options={{
             title: translate('settings'),
             headerStyle: {
-              backgroundColor:theme.colors.headerBG
+              backgroundColor: theme.colors.headerBG,
             },
           }}
           component={SettingsScreen}
@@ -101,4 +105,4 @@ const Tab = createBottomTabNavigator();
   );
 }
 
-export default withTheme(Navigation)
+export default withTheme(Navigation);
