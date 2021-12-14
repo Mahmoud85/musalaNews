@@ -3,7 +3,7 @@ import DarkColors from './dark/colors';
 
 function createTheme(themeName, isDarkMode = false, colors = {}) {
   return {
-    dark:isDarkMode,
+    dark: isDarkMode,
     colors,
     name: themeName,
   };
