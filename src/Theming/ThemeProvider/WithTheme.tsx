@@ -1,5 +1,4 @@
 import React from 'react';
-import getThemeColors from '@musnews/Theming';
 import {ThemeContext} from './ThemeProvider';
 
 const withTheme = WrappedComponent => {
