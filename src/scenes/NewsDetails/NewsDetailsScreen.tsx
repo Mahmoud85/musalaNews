@@ -5,12 +5,12 @@ import Loader from '@musnews/componetns/Loader/Loader.Component';
 import fetchNews from '@musnews/services/news/news.service';
 import {translate} from '@musnews/localization/localizationManager';
 import {addNewsId, findNewsById} from '@musnews/dataFactory/News.Factory';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 function NewsDetails() {
   const navigation = useNavigation();
   const {routes} = navigation.getState();
-  const {params} = routes[1]|| routes[0]
+  const {params} = routes[1] || routes[0];
   const newsItem = params?.newsItem;
   const [item, setItem] = React.useState(null);
   const [error, setError] = React.useState(false);
@@ -27,14 +27,14 @@ function NewsDetails() {
       const result = await fetchNews();
       const formatedNews = addNewsId(result.articles);
       const _id = params?.id;
-      const selectedItem = findNewsById(formatedNews,_id);
-      if (selectedItem){
+      const selectedItem = findNewsById(formatedNews, _id);
+      if (selectedItem) {
         setItem(selectedItem);
-      } else{
-        setError(true)
+      } else {
+        setError(true);
       }
     } catch (error) {
-      setError(true)
+      setError(true);
     }
   };
 
@@ -48,7 +48,7 @@ function NewsDetails() {
         <NewsItemDetails newsItem={item} />
       ) : (
         <View style={{flex: 1}}>
-          <Loader error={error} errorMsg = {translate('noNewsItemError')} />
+          <Loader error={error} errorMsg={translate('noNewsItemError')} />
         </View>
       )}
     </ScrollView>

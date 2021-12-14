@@ -10,4 +10,4 @@ const ThemeProvider = ({theme, children}) => {
   );
 };
 
-export  {  ThemeContext,  ThemeProvider  };
+export {ThemeContext, ThemeProvider};

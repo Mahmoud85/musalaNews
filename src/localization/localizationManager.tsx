@@ -13,8 +13,8 @@ const initializeLang = async () => {
 
 const switchLang = selectedLang => {
   AsyncStorage.setItem('lang', selectedLang);
-  const currentLang = i18n.currentLocale()  
-  if (currentLang !==selectedLang){
+  const currentLang = i18n.currentLocale();
+  if (currentLang !== selectedLang) {
     setLang(selectedLang);
     RNRestart.Restart();
   }

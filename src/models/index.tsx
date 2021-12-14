@@ -1,5 +1,4 @@
-import { NewsItemModel } from "./NewsItem";
-import { ThemeModel } from "./Theme"
+import {NewsItemModel} from './NewsItem';
+import {ThemeModel} from './Theme';
 
-
-export {NewsItemModel,ThemeModel}
+export {NewsItemModel, ThemeModel};
